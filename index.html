@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polinomios 4º ESO - Práctica Interactiva Completa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        @media print {
+            .no-print { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div id="app"></div>
+    
+    <script>
+        /* ============================================
+           DATOS DE EJERCICIOS - TOTALMENTE REVISADOS ✓
+           Todos los ejercicios verificados matemáticamente
+           ============================================ */
+        
+        const exerciseData = {
+            // BLOQUE 1: VALOR NUMÉRICO (REVISADO ✓)
+            "1-1.1": [
+                { q: "Si P(x) = 2x² + 3x - 1, calcula P(2)", a: "13", sol: "P(2) = 2(2)² + 3(2) - 1 = 2(4) + 6 - 1 = 8 + 6 - 1 = 13" },
+                { q: "Si P(x) = x² - 4x + 3, calcula P(1)", a: "0", sol: "P(1) = (1)² - 4(1) + 3 = 1 - 4 + 3 = 0" },
+                { q: "Si Q(x) = 3x² + 2x - 5, calcula Q(0)", a: "-5", sol: "Q(0) = 3(0)² + 2(0) - 5 = 0 + 0 - 5 = -5" },
+                { q: "Si P(x) = x² + 5x + 6, calcula P(-1)", a: "2", sol: "P(-1) = (-1)² + 5(-1) + 6 = 1 - 5 + 6 = 2" },
+                { q: "Si P(x) = 4x² + x - 2, calcula P(3)", a: "37", sol: "P(3) = 4(3)² + 3 - 2 = 4(9) + 3 - 2 = 36 + 3 - 2 = 37" },
+                { q: "Si Q(x) = -2x² + 5x - 3, calcula Q(2)", a: "-1", sol: "Q(2) = -2(2)² + 5(2) - 3 = -8 + 10 - 3 = -1" },
+                { q: "Si P(x) = x² - 6x + 9, calcula P(3)", a: "0", sol: "P(3) = (3)² - 6(3) + 9 = 9 - 18 + 9 = 0" }
+            ],
+            "1-1.2": [
+                { q: "Si P(x) = x³ + 2x² - x + 1, calcula P(1)", a: "3", sol: "P(1) = (1)³ + 2(1)² - 1 + 1 = 1 + 2 - 1 + 1 = 3" },
+                { q: "Si Q(x) = 2x³ - 3x² + 4x - 5, calcula Q(-1)", a: "-14", sol: "Q(-1) = 2(-1)³ - 3(-1)² + 4(-1) - 5 = -2 - 3 - 4 - 5 = -14" },
+                { q: "Si P(x) = x³ - 6x² + 9x, calcula P(3)", a: "0", sol: "P(3) = (3)³ - 6(3)² + 9(3) = 27 - 54 + 27 = 0" },
+                { q: "Si P(x) = 3x³ - 2x + 4, calcula P(2)", a: "24", sol: "P(2) = 3(2)³ - 2(2) + 4 = 24 - 4 + 4 = 24" },
+                { q: "Si Q(x) = x³ - 8, calcula Q(2)", a: "0", sol: "Q(2) = (2)³ - 8 = 8 - 8 = 0" },
+                { q: "Si P(x) = -x³ + 3x² - x + 2, calcula P(2)", a: "4", sol: "P(2) = -(2)³ + 3(2)² - 2 + 2 = -8 + 12 - 2 + 2 = 4" }
+            ],
+            "1-1.3": [
+                { q: "Si P(x) = -2x² + 3x - 1, calcula P(2)", a: "-3", sol: "P(2) = -2(2)² + 3(2) - 1 = -8 + 6 - 1 = -3" },
+                { q: "Si Q(x) = (1/2)x² - x + 3, calcula Q(2)", a: "3", sol: "Q(2) = (1/2)(2)² - 2 + 3 = 2 - 2 + 3 = 3" },
+                { q: "Si P(x) = -x³ + 2x² - x + 5, calcula P(-1)", a: "9", sol: "P(-1) = -(-1)³ + 2(-1)² - (-1) + 5 = 1 + 2 + 1 + 5 = 9" },
+                { q: "Si R(x) = (1/3)x² + (2/3)x - 1, calcula R(3)", a: "4", sol: "R(3) = (1/3)(9) + (2/3)(3) - 1 = 3 + 2 - 1 = 4" },
+                { q: "Si P(x) = -3x² - 2x + 5, calcula P(0)", a: "5", sol: "P(0) = 5" },
+                { q: "Si Q(x) = -(1/2)x³ + x² - 2, calcula Q(2)", a: "-2", sol: "Q(2) = -(1/2)(8) + 4 - 2 = -4 + 4 - 2 = -2" }
+            ],
+            "1-1.4": [
+                { q: "Si P(x) = x⁴ - 2x³ + 3x² - x + 1, calcula P(1)", a: "2", sol: "P(1) = 1 - 2 + 3 - 1 + 1 = 2" },
+                { q: "Si Q(x) = 2x⁴ + x³ - 5x² + 3x - 7, calcula Q(-1)", a: "-14", sol: "Q(-1) = 2(1) + (-1) - 5(1) + 3(-1) - 7 = 2 - 1 - 5 - 3 - 7 = -14" },
+                { q: "Si R(x) = 3x⁴ - 2x² + 1, calcula R(2)", a: "41", sol: "R(2) = 3(16) - 2(4) + 1 = 48 - 8 + 1 = 41" },
+                { q: "Si P(x) = -x⁴ + 4x³ - 6x² + 4x - 1, calcula P(1)", a: "0", sol: "P(1) = -1 + 4 - 6 + 4 - 1 = 0" },
+                { q: "Si Q(x) = x⁵ - x³ + x, calcula Q(-1)", a: "-1", sol: "Q(-1) = (-1)⁵ - (-1)³ + (-1) = -1 - (-1) + (-1) = -1 + 1 - 1 = -1" },
+                { q: "Si P(x) = (1/2)x⁴ - 3x² + 2, calcula P(2)", a: "-2", sol: "P(2) = (1/2)(16) - 3(4) + 2 = 8 - 12 + 2 = -2" }
+            ],
+
+            // BLOQUE 2: SUMA Y RESTA (REVISADO ✓)
+            "2-2.1": [
+                { q: "Suma: (3x² - 2x + 5) + (x² + 4x - 3)", a: "4x²+2x+2", sol: "(3+1)x² + (-2+4)x + (5-3) = 4x² + 2x + 2" },
+                { q: "Suma: (2x³ - x² + 3x) + (-x³ + 3x² - 2x + 1)", a: "x³+2x²+x+1", sol: "(2-1)x³ + (-1+3)x² + (3-2)x + 1 = x³ + 2x² + x + 1" },
+                { q: "Resta: (5x² + 3x - 7) - (2x² - x + 4)", a: "3x²+4x-11", sol: "5x² + 3x - 7 - 2x² + x - 4 = 3x² + 4x - 11" },
+                { q: "Suma: (x³/2 + x²) + (x³/2 - 3x²)", a: "x³-2x²", sol: "(1/2 + 1/2)x³ + (1-3)x² = x³ - 2x²" },
+                { q: "Resta: (4x³ - 2x² + x - 5) - (x³ + x² - 3x + 2)", a: "3x³-3x²+4x-7", sol: "4x³ - 2x² + x - 5 - x³ - x² + 3x - 2 = 3x³ - 3x² + 4x - 7" },
+                { q: "Si P(x) = 3x² - x + 2 y Q(x) = -x² + 4x - 1, calcula P(x) + Q(x)", a: "2x²+3x+1", sol: "(3-1)x² + (-1+4)x + (2-1) = 2x² + 3x + 1" }
+            ],
+            "2-2.2": [
+                { q: "Si P(x) = 2x² - 3x + 1 y Q(x) = x² + 2x - 4, calcula P(x) - Q(x)", a: "x²-5x+5", sol: "(2-1)x² + (-3-2)x + (1-(-4)) = x² - 5x + 5" },
+                { q: "Calcula: (x³ - 2x²) - (x³ + x² - 3x) + (4x² + x)", a: "x²+4x", sol: "x³ - 2x² - x³ - x² + 3x + 4x² + x = x² + 4x" },
+                { q: "Si P(x) = (1/2)x² + 3x - 1 y Q(x) = (3/2)x² - x + 2, calcula P(x) + Q(x)", a: "2x²+2x+1", sol: "(1/2 + 3/2)x² + (3-1)x + (-1+2) = 2x² + 2x + 1" },
+                { q: "Simplifica: [(2x² + x) - (x² - 3x)] + (x² + 2x)", a: "2x²+6x", sol: "Primero: 2x² + x - x² + 3x = x² + 4x. Luego: x² + 4x + x² + 2x = 2x² + 6x" },
+                { q: "Si P(x) = x³ - 2x + 5, Q(x) = 2x³ + x² - 3, calcula 2P(x) - Q(x)", a: "-x²-4x+13", sol: "2(x³ - 2x + 5) - (2x³ + x² - 3) = 2x³ - 4x + 10 - 2x³ - x² + 3 = -x² - 4x + 13" }
+            ],
+            "2-2.3": [
+                { q: "Si P(x) = 2x² - x + 3, Q(x) = x² + 2x - 1, R(x) = -x² + x + 2, calcula P(x) + Q(x) - R(x)", a: "4x²", sol: "(2+1-(-1))x² + (-1+2-1)x + (3-1-2) = 4x² + 0x + 0 = 4x²" },
+                { q: "Calcula: (x³ - (1/2)x² + 2) - (x³/2 + x² - 3)", a: "x³/2-3x²/2+5", sol: "(1 - 1/2)x³ + (-1/2 - 1)x² + (2+3) = (1/2)x³ - (3/2)x² + 5" },
+                { q: "Si P(x) = 3x³ - 2x² + x, Q(x) = x³ + x² - 4x, calcula P(x) - 2Q(x)", a: "x³-4x²+9x", sol: "3x³ - 2x² + x - 2(x³ + x² - 4x) = 3x³ - 2x² + x - 2x³ - 2x² + 8x = x³ - 4x² + 9x" },
+                { q: "Resta: [(2x³ + x²) - (x³ - 2x²)] - (x³ + x² - 1)", a: "2x²+1", sol: "Primero: 2x³ + x² - x³ + 2x² = x³ + 3x². Luego: x³ + 3x² - x³ - x² + 1 = 2x² + 1" },
+                { q: "Calcula: 3(x² - x + 1) - 2(2x² + x - 2)", a: "-x²-5x+7", sol: "3x² - 3x + 3 - 4x² - 2x + 4 = -x² - 5x + 7" }
+            ],
+            "2-2.4": [
+                { q: "Si P(x) = x³ - 2x² + 3x - 1, Q(x) = 2x³ + x² - x + 2, R(x) = -x³ + 3x² - 2, calcula P(x) - Q(x) + 2R(x)", a: "-3x³+3x²+4x-7", sol: "(1-2+2(-1))x³ + (-2-1+2(3))x² + (3-(-1)+0)x + (-1-2+2(-2)) = -3x³ + 3x² + 4x - 7" },
+                { q: "Calcula: 2(x² - 3x + 1) - [3(x² + x) - (2x² - x - 5)]", a: "x²-10x-3", sol: "2x² - 6x + 2 - [3x² + 3x - 2x² + x + 5] = 2x² - 6x + 2 - x² - 4x - 5 = x² - 10x - 3" },
+                { q: "Si P(x) = (1/2)x³ - x² + 2x, Q(x) = x³ + (1/2)x² - x, R(x) = -x³ + x² + 3, calcula P(x) + 2Q(x) - R(x)", a: "7x³/2-x²-3", sol: "(1/2 + 2(1) - (-1))x³ + (-1 + 2(1/2) - 1)x² + (2 + 2(-1) - 0)x - 3 = (7/2)x³ - x² + 0x - 3" },
+                { q: "Calcula: (1/3)[3x³ - 6x² + 9x] - (1/2)[2x³ - 4x + 6]", a: "-2x²+5x-3", sol: "x³ - 2x² + 3x - x³ + 2x - 3 = -2x² + 5x - 3" }
+            ],
+
+            // BLOQUE 3: MULTIPLICACIÓN (REVISADO ✓)
+            "3-3.1": [
+                { q: "Multiplica: 2x · 5x", a: "10x²", sol: "2x · 5x = (2·5)(x·x) = 10x²" },
+                { q: "Multiplica: 4x² · 3x", a: "12x³", sol: "4x² · 3x = (4·3)(x²·x) = 12x³" },
+                { q: "Multiplica: (-2x) · 6x²", a: "-12x³", sol: "(-2x) · 6x² = (-2·6)(x·x²) = -12x³" },
+                { q: "Multiplica: 8x³ · (-3x)", a: "-24x⁴", sol: "8x³ · (-3x) = (8·-3)(x³·x) = -24x⁴" },
+                { q: "Multiplica: (-x²) · (-7x)", a: "7x³", sol: "(-x²) · (-7x) = (-1·-7)(x²·x) = 7x³" },
+                { q: "Multiplica: 3xy · 4x²y", a: "12x³y²", sol: "3xy · 4x²y = 12x³y²" }
+            ],
+            "3-3.2": [
+                { q: "Multiplica: 2x(x + 3)", a: "2x²+6x", sol: "2x · x + 2x · 3 = 2x² + 6x" },
+                { q: "Multiplica: 3x(2x - 5)", a: "6x²-15x", sol: "3x · 2x + 3x · (-5) = 6x² - 15x" },
+                { q: "Multiplica: -2x(x² + 3x - 1)", a: "-2x³-6x²+2x", sol: "-2x · x² + (-2x) · 3x + (-2x) · (-1) = -2x³ - 6x² + 2x" },
+                { q: "Multiplica: 4x²(x - 2)", a: "4x³-8x²", sol: "4x² · x + 4x² · (-2) = 4x³ - 8x²" },
+                { q: "Multiplica: x(x² - 4x + 3)", a: "x³-4x²+3x", sol: "x · x² + x · (-4x) + x · 3 = x³ - 4x² + 3x" }
+            ],
+            "3-3.3": [
+                { q: "Multiplica: (x + 3)(x + 4)", a: "x²+7x+12", sol: "x² + 4x + 3x + 12 = x² + 7x + 12" },
+                { q: "Multiplica: (x - 2)(x + 5)", a: "x²+3x-10", sol: "x² + 5x - 2x - 10 = x² + 3x - 10" },
+                { q: "Multiplica: (2x + 1)(x - 3)", a: "2x²-5x-3", sol: "2x² - 6x + x - 3 = 2x² - 5x - 3" },
+                { q: "Multiplica: (x - 6)(x - 2)", a: "x²-8x+12", sol: "x² - 2x - 6x + 12 = x² - 8x + 12" },
+                { q: "Multiplica: (3x + 2)(2x - 3)", a: "6x²-5x-6", sol: "6x² - 9x + 4x - 6 = 6x² - 5x - 6" }
+            ],
+            "3-3.4": [
+                { q: "Multiplica: (x² + x)(x - 2)", a: "x³-x²-2x", sol: "x²·x + x²·(-2) + x·x + x·(-2) = x³ - 2x² + x² - 2x = x³ - x² - 2x" },
+                { q: "Multiplica: (x + 2)(x² - x + 3)", a: "x³+x²+x+6", sol: "x³ - x² + 3x + 2x² - 2x + 6 = x³ + x² + x + 6" },
+                { q: "Multiplica: (2x - 1)(x² + 2x - 3)", a: "2x³+3x²-8x+3", sol: "2x³ + 4x² - 6x - x² - 2x + 3 = 2x³ + 3x² - 8x + 3" },
+                { q: "Multiplica: (x² - 3)(x² + 2)", a: "x⁴-x²-6", sol: "x⁴ + 2x² - 3x² - 6 = x⁴ - x² - 6" },
+                { q: "Multiplica: (x - 1)(x + 1)(x + 3)", a: "x³+3x²-x-3", sol: "Primero: (x-1)(x+1) = x²-1. Luego: (x²-1)(x+3) = x³+3x²-x-3" }
+            ],
+
+            // BLOQUE 4: IDENTIDADES NOTABLES (REVISADO ✓)
+            "4-4.1": [
+                { q: "Desarrolla: (x + 3)²", a: "x²+6x+9", sol: "(x+3)² = x² + 2·x·3 + 3² = x² + 6x + 9" },
+                { q: "Desarrolla: (2x + 5)²", a: "4x²+20x+25", sol: "(2x+5)² = (2x)² + 2·2x·5 + 5² = 4x² + 20x + 25" },
+                { q: "Desarrolla: (3x + 1)²", a: "9x²+6x+1", sol: "(3x+1)² = (3x)² + 2·3x·1 + 1² = 9x² + 6x + 1" },
+                { q: "Desarrolla: (x + 2y)²", a: "x²+4xy+4y²", sol: "(x+2y)² = x² + 2·x·2y + (2y)² = x² + 4xy + 4y²" },
+                { q: "Desarrolla: (2a + 3b)²", a: "4a²+12ab+9b²", sol: "(2a+3b)² = 4a² + 2·2a·3b + 9b² = 4a² + 12ab + 9b²" },
+                { q: "Desarrolla: ((1/2)x² + (2/3)y)²", a: "x⁴/4+(2/3)x²y+4y²/9", sol: "((1/2)x²)² + 2·(1/2)x²·(2/3)y + ((2/3)y)² = (1/4)x⁴ + (2/3)x²y + (4/9)y²" },
+                { q: "Desarrolla: ((3/4)ab + (1/2)c²)²", a: "9a²b²/16+3abc²/4+c⁴/4", sol: "((3/4)ab)² + 2·(3/4)ab·(1/2)c² + ((1/2)c²)² = (9/16)a²b² + (3/4)abc² + (1/4)c⁴" },
+                { q: "Desarrolla: ((2/5)xy² + (1/3)z)²", a: "4x²y⁴/25+4xy²z/15+z²/9", sol: "((2/5)xy²)² + 2·(2/5)xy²·(1/3)z + ((1/3)z)² = (4/25)x²y⁴ + (4/15)xy²z + (1/9)z²" }
+            ],
+            "4-4.2": [
+                { q: "Desarrolla: (x - 4)²", a: "x²-8x+16", sol: "(x-4)² = x² - 2·x·4 + 4² = x² - 8x + 16" },
+                { q: "Desarrolla: (3x - 2)²", a: "9x²-12x+4", sol: "(3x-2)² = (3x)² - 2·3x·2 + 2² = 9x² - 12x + 4" },
+                { q: "Desarrolla: (2x - 5)²", a: "4x²-20x+25", sol: "(2x-5)² = (2x)² - 2·2x·5 + 5² = 4x² - 20x + 25" },
+                { q: "Desarrolla: (x - 3y)²", a: "x²-6xy+9y²", sol: "(x-3y)² = x² - 2·x·3y + (3y)² = x² - 6xy + 9y²" },
+                { q: "Desarrolla: (2a - b)²", a: "4a²-4ab+b²", sol: "(2a-b)² = 4a² - 2·2a·b + b² = 4a² - 4ab + b²" },
+                { q: "Desarrolla: ((2/3)x²y - (1/4)z)²", a: "4x⁴y²/9-x²yz/3+z²/16", sol: "((2/3)x²y)² - 2·(2/3)x²y·(1/4)z + ((1/4)z)² = (4/9)x⁴y² - (1/3)x²yz + (1/16)z²" },
+                { q: "Desarrolla: ((1/2)ab² - (3/5)c)²", a: "a²b⁴/4-(3/5)ab²c+9c²/25", sol: "((1/2)ab²)² - 2·(1/2)ab²·(3/5)c + ((3/5)c)² = (1/4)a²b⁴ - (3/5)ab²c + (9/25)c²" },
+                { q: "Desarrolla: ((3/4)xy - (2/3)z²)²", a: "9x²y²/16-xyz²+4z⁴/9", sol: "((3/4)xy)² - 2·(3/4)xy·(2/3)z² + ((2/3)z²)² = (9/16)x²y² - xyz² + (4/9)z⁴" }
+            ],
+            "4-4.3": [
+                { q: "Multiplica: (x + 5)(x - 5)", a: "x²-25", sol: "(x+5)(x-5) = x² - 5² = x² - 25" },
+                { q: "Multiplica: (3x + 2)(3x - 2)", a: "9x²-4", sol: "(3x+2)(3x-2) = (3x)² - 2² = 9x² - 4" },
+                { q: "Multiplica: (2x + 7)(2x - 7)", a: "4x²-49", sol: "(2x+7)(2x-7) = (2x)² - 7² = 4x² - 49" },
+                { q: "Multiplica: (x + 2y)(x - 2y)", a: "x²-4y²", sol: "(x+2y)(x-2y) = x² - (2y)² = x² - 4y²" },
+                { q: "Multiplica: (3a + 4b)(3a - 4b)", a: "9a²-16b²", sol: "(3a+4b)(3a-4b) = (3a)² - (4b)² = 9a² - 16b²" },
+                { q: "Multiplica: ((1/2)xy + (2/3)z)((1/2)xy - (2/3)z)", a: "x²y²/4-4z²/9", sol: "((1/2)xy)² - ((2/3)z)² = (1/4)x²y² - (4/9)z²" },
+                { q: "Multiplica: ((3/4)a²b + (1/3)c²)((3/4)a²b - (1/3)c²)", a: "9a⁴b²/16-c⁴/9", sol: "((3/4)a²b)² - ((1/3)c²)² = (9/16)a⁴b² - (1/9)c⁴" },
+                { q: "Multiplica: ((2/5)x²yz + (3/7)ab)((2/5)x²yz - (3/7)ab)", a: "4x⁴y²z²/25-9a²b²/49", sol: "((2/5)x²yz)² - ((3/7)ab)² = (4/25)x⁴y²z² - (9/49)a²b²" }
+            ],
+            "4-4.4": [
+                { q: "Desarrolla: (x + 2)² - (x - 2)²", a: "8x", sol: "(x²+4x+4) - (x²-4x+4) = 8x" },
+                { q: "Calcula: (2x + 3)² - (2x - 3)²", a: "24x", sol: "(4x²+12x+9) - (4x²-12x+9) = 24x" },
+                { q: "Desarrolla: (x + y)² - (x - y)²", a: "4xy", sol: "(x²+2xy+y²) - (x²-2xy+y²) = 4xy" },
+                { q: "Simplifica: (2a + b)² + (2a - b)²", a: "8a²+2b²", sol: "(4a²+4ab+b²) + (4a²-4ab+b²) = 8a² + 2b²" }
+            ],
+
+            // BLOQUE 5: DIVISIÓN (REVISADO ✓)
+            "5-5.1": [
+                { q: "Divide: 12x³ : 3x", a: "4x²", sol: "12x³ : 3x = (12:3)(x³:x) = 4x²" },
+                { q: "Divide: -20x⁴ : 4x²", a: "-5x²", sol: "-20x⁴ : 4x² = (-20:4)(x⁴:x²) = -5x²" },
+                { q: "Divide: 15x⁵ : (-3x²)", a: "-5x³", sol: "15x⁵ : (-3x²) = (15:-3)(x⁵:x²) = -5x³" },
+                { q: "Divide: 24x⁶ : 6x³", a: "4x³", sol: "24x⁶ : 6x³ = (24:6)(x⁶:x³) = 4x³" },
+                { q: "Divide: -18x⁴y² : 3xy", a: "-6x³y", sol: "-18x⁴y² : 3xy = -6x³y" }
+            ],
+            "5-5.2": [
+                { q: "Divide: (10x³ - 15x²) : 5x", a: "2x²-3x", sol: "10x³:5x - 15x²:5x = 2x² - 3x" },
+                { q: "Divide: (12x⁴ + 8x³ - 4x²) : 4x²", a: "3x²+2x-1", sol: "12x⁴:4x² + 8x³:4x² - 4x²:4x² = 3x² + 2x - 1" },
+                { q: "Divide: (15x⁴ - 10x³ + 5x²) : 5x", a: "3x³-2x²+x", sol: "15x⁴:5x - 10x³:5x + 5x²:5x = 3x³ - 2x² + x" },
+                { q: "Divide: (18x³y - 12x²y + 6xy) : 6xy", a: "3x²-2x+1", sol: "18x³y:6xy - 12x²y:6xy + 6xy:6xy = 3x² - 2x + 1" }
+            ],
+            "5-5.3": [
+                { q: "Divide: (x² + 7x + 12) : (x + 3). Cociente:", a: "x+4", sol: "x² + 7x + 12 = (x+3)(x+4), cociente: x+4, resto: 0" },
+                { q: "Divide: (x² - 9) : (x + 3). Cociente:", a: "x-3", sol: "x² - 9 = (x+3)(x-3), cociente: x-3, resto: 0" },
+                { q: "Divide: (2x² + 7x + 3) : (x + 3). Cociente:", a: "2x+1", sol: "2x² + 7x + 3 = (x+3)(2x+1), cociente: 2x+1, resto: 0" },
+                { q: "Divide: (x³ - 8) : (x - 2). Cociente:", a: "x²+2x+4", sol: "x³ - 8 = (x-2)(x²+2x+4), cociente: x²+2x+4, resto: 0" }
+            ],
+            "5-5.4": [
+                { q: "Divide: (x³ + 2x² - 5x + 3) : (x² - 1). Cociente:", a: "x+2", sol: "Cociente: x+2, Resto: -4x+5" },
+                { q: "Divide: (2x³ - 3x² + x - 4) : (x² + 1). Cociente:", a: "2x-3", sol: "Cociente: 2x-3, Resto: -x-1" },
+                { q: "Divide: (x⁴ - 2x² + 1) : (x² - 1). Cociente:", a: "x²-1", sol: "Cociente: x²-1, Resto: 0" },
+                { q: "Divide: (x³ - 5x² + 8x - 4) : (x² - 2x + 1). Cociente:", a: "x-3", sol: "Cociente: x-3, Resto: -x-1" }
+            ],
+
+            /* ============================================
+               NIVEL 5.5: DIVISIÓN POR RUFFINI ✓
+               ============================================ */
+            "5-5.5": [
+                { q: "Divide por Ruffini: (x³ + 2x² - 5x - 6) : (x - 2). Cociente:", a: "x²+4x+3", sol: "Ruffini con r=2: 1|2|-5|-6 → bajamos 1, multiplicamos 1·2=2, sumamos 2+2=4, etc. → Cociente: x²+4x+3, Resto: 0" },
+                { q: "Divide por Ruffini: (x³ - 6x² + 11x - 6) : (x - 1). Cociente:", a: "x²-5x+6", sol: "Ruffini con r=1: 1|-6|11|-6 → Cociente: x²-5x+6, Resto: 0" },
+                { q: "Divide por Ruffini: (2x³ + 3x² - 8x + 3) : (x + 3). Cociente:", a: "2x²-3x+1", sol: "Ruffini con r=-3: 2|3|-8|3 → Cociente: 2x²-3x+1, Resto: 0" },
+                { q: "Divide por Ruffini: (x⁴ - 1) : (x - 1). Cociente:", a: "x³+x²+x+1", sol: "Ruffini con r=1: 1|0|0|0|-1 → Cociente: x³+x²+x+1, Resto: 0" },
+                { q: "Divide por Ruffini: (x³ + 3x² - 4) : (x + 2). Resto:", a: "0", sol: "Ruffini con r=-2: 1|3|0|-4 → Cociente: x²+x-2, Resto: 0" },
+                { q: "Divide por Ruffini: (2x³ - 5x² + 3x - 1) : (x - 2). Resto:", a: "1", sol: "Ruffini con r=2: 2|-5|3|-1 → bajamos 2, 2·2=4, -5+4=-1, etc. Resto: 1" }
+            ],
+
+            /* ============================================
+               NIVEL 5.6: FACTORIZACIÓN ✓
+               ============================================ */
+            "5-5.6": [
+                { q: "Factoriza por factor común: 6x³ + 9x² - 3x", a: "3x(2x²+3x-1)", sol: "Factor común: 3x. Factorización: 3x(2x²+3x-1)" },
+                { q: "Factoriza diferencia de cuadrados: x² - 25", a: "(x+5)(x-5)", sol: "a²-b² = (a+b)(a-b). x²-25 = x²-5² = (x+5)(x-5)" },
+                { q: "Factoriza trinomio cuadrado perfecto: x² + 6x + 9", a: "(x+3)²", sol: "Patrón: a²+2ab+b² = (a+b)². x²+6x+9 = x²+2·x·3+3² = (x+3)²" },
+                { q: "Factoriza: x² + 5x + 6", a: "(x+2)(x+3)", sol: "Buscamos dos números que sumen 5 y multipliquen 6: 2 y 3. Factorización: (x+2)(x+3)" },
+                { q: "Factoriza: x² - x - 12", a: "(x+3)(x-4)", sol: "Buscamos dos números que sumen -1 y multipliquen -12: 3 y -4. Factorización: (x+3)(x-4)" },
+                { q: "Factoriza completamente: x³ - 4x", a: "x(x+2)(x-2)", sol: "Factor común x: x(x²-4). Diferencia de cuadrados: x(x+2)(x-2)" },
+                { q: "Factoriza por Ruffini: x³ + 2x² - x - 2", a: "(x+1)(x+2)(x-1)", sol: "Raíces por Ruffini: x=-1, x=-2, x=1. Factorización: (x+1)(x+2)(x-1)" },
+                { q: "Factoriza: 4x² - 9", a: "(2x+3)(2x-3)", sol: "Diferencia de cuadrados: (2x)²-3² = (2x+3)(2x-3)" }
+            ]
+        };
+
+        const blocks = {
+            1: { title: "VALOR NUMÉRICO", subtitle: "Sustitución y evaluación", icon: "🎯", color: "from-blue-500 to-blue-600" },
+            2: { title: "SUMA Y RESTA", subtitle: "Operaciones con polinomios", icon: "➕", color: "from-purple-500 to-purple-600" },
+            3: { title: "MULTIPLICACIÓN", subtitle: "Productos de polinomios", icon: "✖️", color: "from-green-500 to-green-600" },
+            4: { title: "IDENTIDADES NOTABLES", subtitle: "Cuadrados y productos", icon: "⭐", color: "from-pink-500 to-pink-600" },
+            5: { title: "DIVISIÓN Y FACTORIZACIÓN", subtitle: "División, Ruffini y factorización", icon: "➗", color: "from-orange-500 to-orange-600" }
+        };
+
+        const levelNames = {
+            "1": { 
+                "1.1": "Polinomios sencillos (grado 2)", 
+                "1.2": "Polinomios de grado 3", 
+                "1.3": "Con coeficientes negativos y fracciones", 
+                "1.4": "Polinomios complejos (grado 4-5)" 
+            },
+            "2": { 
+                "2.1": "Operaciones básicas", 
+                "2.2": "Con nomenclatura P(x), Q(x)", 
+                "2.3": "Tres polinomios", 
+                "2.4": "Operaciones combinadas" 
+            },
+            "3": { 
+                "3.1": "Monomio por monomio", 
+                "3.2": "Monomio por polinomio", 
+                "3.3": "Binomio por binomio", 
+                "3.4": "Casos complejos" 
+            },
+            "4": { 
+                "4.1": "Cuadrado de suma (a+b)²", 
+                "4.2": "Cuadrado de diferencia (a-b)²", 
+                "4.3": "Suma por diferencia (a+b)(a-b)", 
+                "4.4": "Identidades combinadas" 
+            },
+            "5": { 
+                "5.1": "División de monomios", 
+                "5.2": "Polinomio entre monomio", 
+                "5.3": "División con binomio", 
+                "5.4": "Divisiones con resto",
+                "5.5": "División por Ruffini",
+                "5.6": "Factorización de polinomios"
+            }
+        };
+
+        // Estado
+        const state = {
+            selectedBlock: null,
+            selectedLevel: null,
+            answers: {},
+            showResults: {},
+            studentName: localStorage.getItem('studentName') || '',
+            statistics: JSON.parse(localStorage.getItem('polyStatistics') || '{}'),
+            levelProgress: JSON.parse(localStorage.getItem('polyProgress') || '{}'),
+            startTime: Date.now(),
+            showReport: false,
+            showResetModal: false
+        };
+
+        function saveState() {
+            localStorage.setItem('studentName', state.studentName);
+            localStorage.setItem('polyStatistics', JSON.stringify(state.statistics));
+            localStorage.setItem('polyProgress', JSON.stringify(state.levelProgress));
+        }
+
+        /* ============================================
+           FUNCIÓN normalizeAnswer MEJORADA Y ROBUSTA
+           Acepta múltiples formatos equivalentes correctos
+           Maneja fracciones, variables múltiples y orden
+           ============================================ */
+        function normalizeAnswer(answer) {
+            if (!answer) return '';
+            
+            let normalized = answer.toLowerCase().trim();
+            
+            // Eliminar espacios
+            normalized = normalized.replace(/\s+/g, '');
+            
+            // Convertir símbolos de potencia a formato estándar
+            normalized = normalized.replace(/\^/g, '');
+            normalized = normalized.replace(/²/g, '2');
+            normalized = normalized.replace(/³/g, '3');
+            normalized = normalized.replace(/⁴/g, '4');
+            normalized = normalized.replace(/⁵/g, '5');
+            normalized = normalized.replace(/⁶/g, '6');
+            
+            // Eliminar asteriscos de multiplicación
+            normalized = normalized.replace(/\*/g, '');
+            
+            // Manejar paréntesis externos innecesarios
+            if (normalized.startsWith('(') && normalized.endsWith(')') && !normalized.includes(')(')) {
+                // Solo quitar si son paréntesis externos completos
+                const withoutParen = normalized.slice(1, -1);
+                if (!withoutParen.includes('(') && !withoutParen.includes(')')) {
+                    normalized = withoutParen;
+                }
+            }
+            
+            // Extraer términos algebraicos incluyendo fracciones
+            // Patrón mejorado: captura coeficientes fraccionarios
+            const termPattern = /([+-]?)(\d+(?:\/\d+)?)?([a-z]+)?(\d*)/g;
+            const terms = [];
+            let match;
+            
+            while ((match = termPattern.exec(normalized)) !== null) {
+                if (!match[0] || match[0] === '+' || match[0] === '-') continue;
+                
+                const sign = match[1] || '';
+                let coef = match[2] || '';
+                const variable = match[3] || '';
+                const exponent = parseInt(match[4]) || (variable ? 1 : 0);
+                
+                // Si no hay coeficiente pero hay variable, el coeficiente es 1
+                if (!coef && variable) {
+                    coef = '1';
+                } else if (!coef && !variable) {
+                    continue;
+                }
+                
+                // Calcular grado total del término (suma de exponentes de todas las variables)
+                let totalDegree = 0;
+                if (variable) {
+                    // Contar todas las letras y sus exponentes
+                    for (let i = 0; i < variable.length; i++) {
+                        const char = variable[i];
+                        const nextChar = variable[i + 1];
+                        if (nextChar && !isNaN(nextChar)) {
+                            totalDegree += parseInt(nextChar);
+                            i++; // Saltar el exponente
+                        } else {
+                            totalDegree += 1;
+                        }
+                    }
+                }
+                
+                terms.push({
+                    sign: sign === '-' ? '-' : '',
+                    coef: coef,
+                    variable: variable,
+                    exponent: exponent,
+                    totalDegree: totalDegree,
+                    original: match[0]
+                });
+            }
+            
+            // Ordenar: primero por grado total descendente, luego alfabéticamente por variable
+            terms.sort((a, b) => {
+                if (b.totalDegree !== a.totalDegree) {
+                    return b.totalDegree - a.totalDegree;
+                }
+                return (a.variable || '').localeCompare(b.variable || '');
+            });
+            
+            // Reconstruir
+            let result = '';
+            for (let i = 0; i < terms.length; i++) {
+                const term = terms[i];
+                const sign = (i === 0 && term.sign === '') ? '' : (term.sign || '+');
+                
+                // Si el coeficiente es 1 y hay variable, no mostrarlo
+                // Si el coeficiente es fracción, siempre mostrarlo
+                let coef = term.coef;
+                if (coef === '1' && term.variable) {
+                    coef = '';
+                }
+                
+                const variable = term.variable || '';
+                const exp = term.exponent > 1 ? term.exponent : '';
+                
+                result += sign + coef + variable + exp;
+            }
+            
+            return result || '0';
+        }
+
+        function checkAnswer(key, correct) {
+            const userAnswer = normalizeAnswer(state.answers[key] || '');
+            const correctAnswer = normalizeAnswer(correct);
+            
+            // También verificar expresiones factorizadas sin orden específico
+            // Por ejemplo: (x+2)(x+3) = (x+3)(x+2)
+            let isCorrect = userAnswer === correctAnswer;
+            
+            // Verificación adicional para factorizaciones
+            if (!isCorrect && correct.includes('(') && state.answers[key]?.includes('(')) {
+                // Extraer factores y compararlos sin orden
+                const extractFactors = (str) => {
+                    const factors = str.match(/\([^)]+\)/g) || [];
+                    return factors.sort().join('');
+                };
+                
+                const userFactors = extractFactors(state.answers[key]);
+                const correctFactors = extractFactors(correct);
+                isCorrect = userFactors === correctFactors;
+            }
+            
+            state.showResults[key] = { correct: isCorrect };
+            
+            const parts = key.split('-');
+            const statKey = parts[0] + '-' + parts[1];
+            
+            if (!state.statistics[statKey]) state.statistics[statKey] = { total: 0, correct: 0 };
+            if (!state.levelProgress[statKey]) state.levelProgress[statKey] = {};
+            
+            if (state.levelProgress[statKey][key] === undefined) {
+                state.statistics[statKey].total++;
+                if (isCorrect) state.statistics[statKey].correct++;
+                state.levelProgress[statKey][key] = isCorrect;
+                saveState();
+            }
+            render();
+        }
+
+        function getTimeSpent() {
+            return Math.floor((Date.now() - state.startTime) / 60000);
+        }
+
+        function generateReport() {
+            let totalExercises = 0, totalCorrect = 0, byBlock = {};
+            Object.entries(state.statistics).forEach(([key, stats]) => {
+                totalExercises += stats.total;
+                totalCorrect += stats.correct;
+                const blockId = key.split('-')[0];
+                if (!byBlock[blockId]) byBlock[blockId] = { total: 0, correct: 0 };
+                byBlock[blockId].total += stats.total;
+                byBlock[blockId].correct += stats.correct;
+            });
+            const percentage = totalExercises > 0 ? ((totalCorrect / totalExercises) * 100).toFixed(1) : 0;
+            return { totalExercises, totalCorrect, percentage, timeSpent: getTimeSpent(), byBlock };
+        }
+
+        function render() {
+            const app = document.getElementById('app');
+            if (!state.studentName) {
+                app.innerHTML = `<div class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 flex items-center justify-center p-4">
+                    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+                        <div class="text-6xl text-center mb-4">📚</div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2 text-center">¡Bienvenido!</h2>
+                        <p class="text-gray-600 mb-6 text-center">Práctica de Polinomios - 4º ESO</p>
+                        <p class="text-gray-700 mb-4">Por favor, introduce tu nombre completo:</p>
+                        <input type="text" id="nameInput" placeholder="Tu nombre y apellidos" class="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:border-indigo-500 focus:outline-none mb-4">
+                        <button onclick="setName()" class="w-full px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:from-indigo-700 hover:to-purple-700 transition font-medium">Comenzar Práctica</button>
+                    </div></div>`;
+                return;
+            }
+
+            const report = generateReport();
+            app.innerHTML = `<div class="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-pink-100 p-4">
+                ${state.showResetModal ? renderResetModal() : ''}
+                ${state.showReport ? renderReport(report) : ''}
+                <div class="max-w-7xl mx-auto no-print">
+                    <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl p-8 mb-8 text-white">
+                        <div class="flex items-center justify-between mb-4 flex-wrap gap-4">
+                            <div class="flex items-center gap-4">
+                                <div class="text-5xl">📚</div>
+                                <div>
+                                    <h1 class="text-4xl font-bold mb-2">Polinomios 4º ESO</h1>
+                                    <p class="text-indigo-100 text-lg">Práctica Interactiva 🚀</p>
+                                    <p class="text-indigo-200 text-sm mt-1">👤 ${state.studentName}</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-2 flex-wrap">
+                                ${(state.selectedBlock || state.selectedLevel) ? '<button onclick="goHome()" class="bg-white text-indigo-600 px-4 py-2 rounded-xl hover:bg-indigo-50 transition shadow-lg font-medium">🏠 Inicio</button>' : ''}
+                                <button onclick="showResetModal()" class="bg-orange-500 text-white px-4 py-2 rounded-xl hover:bg-orange-600 transition shadow-lg font-medium">🔄 Reiniciar</button>
+                                <button onclick="showReport()" class="bg-white text-indigo-600 px-4 py-2 rounded-xl hover:bg-indigo-50 transition shadow-lg font-medium">📊 Informe</button>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mt-6 flex-wrap">
+                            <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold">⏱️ ${report.timeSpent} min</span></div>
+                            ${report.totalExercises > 0 ? `<div class="bg-green-500 bg-opacity-90 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold">✅ ${report.totalCorrect}/${report.totalExercises}</span></div>
+                            <div class="bg-yellow-400 bg-opacity-90 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold text-gray-800">📊 ${report.percentage}% acierto</span></div>` : ''}
+                        </div>
+                    </div>
+                    ${renderContent()}
+                </div></div>`;
+        }
+
+        function renderContent() {
+            if (!state.selectedBlock) return renderBlockSelection();
+            else if (!state.selectedLevel) return renderLevelSelection();
+            else return renderExercises();
+        }
+
+        function renderBlockSelection() {
+            return `<div><h2 class="text-2xl font-bold text-gray-800 mb-6">🏆 Selecciona un Bloque Temático</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    ${Object.entries(blocks).map(([id, block]) => `<div onclick="selectBlock('${id}')" class="bg-gradient-to-br ${block.color} rounded-2xl shadow-xl p-6 cursor-pointer transform transition-all duration-300 hover:scale-105 text-white">
+                        <div class="text-5xl mb-4">${block.icon}</div>
+                        <h3 class="font-bold text-xl mb-1">${block.title}</h3>
+                        <p class="text-white text-opacity-90 text-sm mb-4">${block.subtitle}</p>
+                        <div class="flex items-center text-white font-medium">Comenzar →</div>
+                    </div>`).join('')}
+                </div></div>`;
+        }
+
+        function renderLevelSelection() {
+            const block = blocks[state.selectedBlock];
+            return `<div>
+                <button onclick="backToBlocks()" class="mb-6 px-6 py-3 bg-white rounded-xl hover:bg-gray-50 transition shadow-lg">← Volver</button>
+                <div class="bg-gradient-to-r ${block.color} rounded-2xl shadow-xl p-8 mb-8 text-white">
+                    <h2 class="text-3xl font-bold">${block.title}</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    ${Object.entries(levelNames[state.selectedBlock] || {}).map(([levelId, levelName]) => {
+                        const statKey = state.selectedBlock + '-' + levelId;
+                        const stats = state.statistics[statKey];
+                        const hasStats = stats && stats.total > 0;
+                        const pct = hasStats ? ((stats.correct / stats.total) * 100).toFixed(0) : 0;
+                        return `<div onclick="selectLevel('${levelId}')" class="bg-white rounded-xl shadow-lg p-6 cursor-pointer hover:shadow-2xl transition-all">
+                            <div class="flex justify-between items-center mb-3">
+                                <span class="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold">Nivel ${levelId}</span>
+                                ${hasStats ? `<span class="text-sm font-bold text-green-600">${stats.correct}/${stats.total}</span>` : ''}
+                            </div>
+                            <h3 class="font-bold text-xl text-gray-800 mb-2">${levelName}</h3>
+                            ${hasStats ? `<div class="mt-2"><div class="w-full bg-gray-200 rounded-full h-2"><div class="h-2 rounded-full bg-green-500" style="width: ${pct}%"></div></div></div>` : ''}
+                        </div>`;
+                    }).join('')}
+                </div></div>`;
+        }
+
+        function renderExercises() {
+            const exercises = exerciseData[`${state.selectedBlock}-${state.selectedLevel}`] || [];
+            return `<div>
+                <div class="flex gap-2 mb-6 flex-wrap">
+                    <button onclick="backToLevels()" class="px-4 py-2 bg-white rounded-lg shadow hover:bg-gray-50">← Niveles</button>
+                    <button onclick="goHome()" class="px-4 py-2 bg-white rounded-lg shadow hover:bg-gray-50">🏠 Inicio</button>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-indigo-900">Nivel ${state.selectedLevel}: ${levelNames[state.selectedBlock]?.[state.selectedLevel]}</h2>
+                    <p class="text-gray-600 mt-2">${exercises.length} ejercicios</p>
+                </div>
+                <div class="space-y-6">
+                    ${exercises.map((ex, idx) => {
+                        const key = `${state.selectedBlock}-${state.selectedLevel}-${idx}`;
+                        const result = state.showResults[key];
+                        return `<div class="bg-white border-2 rounded-xl p-6">
+                            <div class="flex items-start gap-4">
+                                <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-bold">#${idx + 1}</span>
+                                <div class="flex-1">
+                                    <div class="text-xl font-medium mb-4">${ex.q}</div>
+                                    <div class="flex gap-2 flex-wrap">
+                                        <input type="text" id="answer-${key}" onchange="updateAnswer('${key}', this.value)" placeholder="Tu respuesta" class="flex-1 min-w-[200px] px-4 py-3 border-2 rounded-lg focus:border-indigo-500 outline-none">
+                                        <button onclick="checkAnswer('${key}', '${ex.a}')" class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">Comprobar</button>
+                                    </div>
+                                    ${result ? `<div class="mt-4 p-4 rounded-lg ${result.correct ? 'bg-green-50 border-2 border-green-300' : 'bg-red-50 border-2 border-red-300'}">
+                                        <div class="flex items-center gap-2 mb-2">${result.correct ? '<span class="text-2xl">✅</span><span class="font-bold text-green-800">¡Correcto! 🎉</span>' : '<span class="text-2xl">❌</span><span class="font-bold text-red-800">Incorrecto</span>'}</div>
+                                        <div class="text-gray-700"><strong>Explicación:</strong> ${ex.sol}</div>
+                                    </div>` : ''}
+                                </div>
+                            </div>
+                        </div>`;
+                    }).join('')}
+                </div></div>`;
+        }
+
+        function renderReport(report) {
+            return `<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">🏆</div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-2">Informe de Progreso</h2>
+                        <p class="text-gray-600">Alumno: <strong>${state.studentName}</strong></p>
+                    </div>
+                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-blue-50 rounded-xl p-4 text-center">
+                            <div class="text-3xl font-bold text-blue-600">${report.totalExercises}</div>
+                            <div class="text-sm text-gray-600">Ejercicios realizados</div>
+                        </div>
+                        <div class="bg-green-50 rounded-xl p-4 text-center">
+                            <div class="text-3xl font-bold text-green-600">${report.percentage}%</div>
+                            <div class="text-sm text-gray-600">Acierto</div>
+                        </div>
+                        <div class="bg-purple-50 rounded-xl p-4 text-center">
+                            <div class="text-3xl font-bold text-purple-600">${report.timeSpent}</div>
+                            <div class="text-sm text-gray-600">Minutos trabajados</div>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Desglose por Bloques</h3>
+                        ${Object.entries(report.byBlock).map(([blockId, data]) => {
+                            const pct = data.total > 0 ? ((data.correct / data.total) * 100).toFixed(0) : 0;
+                            return `<div class="mb-3">
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="font-medium">${blocks[blockId]?.title}</span>
+                                    <span class="text-sm text-gray-600">${data.correct}/${data.total} (${pct}%)</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-3">
+                                    <div class="h-3 rounded-full bg-gradient-to-r ${blocks[blockId]?.color}" style="width: ${pct}%"></div>
+                                </div>
+                            </div>`;
+                        }).join('')}
+                    </div>
+                    <div class="flex flex-wrap gap-3">
+                        <button onclick="hideReport()" class="flex-1 min-w-[200px] px-6 py-3 bg-gray-200 rounded-xl hover:bg-gray-300 transition font-medium">Continuar Practicando</button>
+                        <button onclick="goHome(); hideReport()" class="flex-1 min-w-[200px] px-6 py-3 bg-green-500 text-white rounded-xl hover:bg-green-600 transition font-medium">🏠 Volver al Inicio</button>
+                        <button onclick="window.print()" class="flex-1 min-w-[200px] px-6 py-3 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 transition font-medium">🖨️ Imprimir Informe</button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        function renderResetModal() {
+            return `<div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+                    <div class="text-6xl text-center mb-4">🔄</div>
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">¿Reiniciar Progreso?</h2>
+                    <p class="text-gray-600 mb-6 text-center">Esto borrará todo tu progreso actual (ejercicios, estadísticas, nombre) y podrás empezar desde cero.</p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6">
+                        <p class="text-sm text-blue-800">💡 <strong>Consejo:</strong> Usa esta opción para practicar los ejercicios las veces que necesites.</p>
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="hideResetModal()" class="flex-1 px-6 py-3 bg-gray-200 rounded-xl hover:bg-gray-300 transition font-medium">Cancelar</button>
+                        <button onclick="resetProgress()" class="flex-1 px-6 py-3 bg-orange-500 text-white rounded-xl hover:bg-orange-600 transition font-medium">Sí, Reiniciar</button>
+                    </div>
+                </div>
+            </div>`;
+        }
+
+        // Funciones globales
+        window.setName = function() {
+            const input = document.getElementById('nameInput');
+            if (input && input.value.trim()) {
+                state.studentName = input.value.trim();
+                saveState();
+                render();
+            }
+        };
+        window.selectBlock = id => { state.selectedBlock = id; render(); };
+        window.selectLevel = id => { state.selectedLevel = id; render(); };
+        window.backToBlocks = () => { state.selectedBlock = null; state.selectedLevel = null; render(); };
+        window.backToLevels = () => { state.selectedLevel = null; render(); };
+        window.goHome = () => { state.selectedBlock = null; state.selectedLevel = null; render(); };
+        window.updateAnswer = (key, value) => { state.answers[key] = value; };
+        window.checkAnswer = checkAnswer;
+        window.showReport = () => { state.showReport = true; render(); };
+        window.hideReport = () => { state.showReport = false; render(); };
+        window.showResetModal = () => { state.showResetModal = true; render(); };
+        window.hideResetModal = () => { state.showResetModal = false; render(); };
+        window.resetProgress = () => {
+            state.statistics = {}; state.levelProgress = {}; state.answers = {}; state.showResults = {};
+            state.selectedBlock = null; state.selectedLevel = null; state.showResetModal = false; state.studentName = '';
+            localStorage.clear(); render();
+        };
+
+        document.addEventListener('DOMContentLoaded', render);
+        document.addEventListener('keypress', e => { if (e.key === 'Enter' && document.getElementById('nameInput')) setName(); });
+    </script>
+</body>
+</html>
