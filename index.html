@@ -65,7 +65,7 @@
                 { q: "Si Q(x) = -3x² - 4x + 7, calcula Q(-1)", a: "8", sol: "Q(-1) = -3(-1)² - 4(-1) + 7 = -3 + 4 + 7 = 8" },
                 { q: "Si P(x) = -x³ + 2x² - x + 5, calcula P(-1)", a: "9", sol: "P(-1) = -(-1)³ + 2(-1)² - (-1) + 5 = 1 + 2 + 1 + 5 = 9" },
                 { q: "Si R(x) = -5x² + 10x - 3, calcula R(2)", a: "-3", sol: "R(2) = -5(2)² + 10(2) - 3 = -20 + 20 - 3 = -3" },
-                { q: "Si P(x) = -3x² - 2x + 5, calcula P(0)", a: "5", sol: "P(0) = 5" },
+                { q: "Si P(x) = -3x² - 2x + 5, calcula P(0)", a: "5", sol: "P(0) = -3(0)² - 2(0) + 5 = 0 - 0 + 5 = 5" },
                 { q: "Si Q(x) = -2x³ - 3x² + 4x - 1, calcula Q(1)", a: "-2", sol: "Q(1) = -2(1)³ - 3(1)² + 4(1) - 1 = -2 - 3 + 4 - 1 = -2" },
                 { q: "Si P(x) = -4x² + 8x - 3, calcula P(-1)", a: "-15", sol: "P(-1) = -4(-1)² + 8(-1) - 3 = -4 - 8 - 3 = -15" }
             ],
@@ -121,12 +121,12 @@
 
             // BLOQUE 3: MULTIPLICACIÓN
             "3-3.1": [
-                { q: "Multiplica: 2x · 5x", a: "10x²", sol: "2x · 5x = 10x²" },
-                { q: "Multiplica: 4x² · 3x", a: "12x³", sol: "4x² · 3x = 12x³" },
-                { q: "Multiplica: (-2x) · 6x²", a: "-12x³", sol: "(-2x) · 6x² = -12x³" },
-                { q: "Multiplica: 8x³ · (-3x)", a: "-24x⁴", sol: "8x³ · (-3x) = -24x⁴" },
-                { q: "Multiplica: (-x²) · (-7x)", a: "7x³", sol: "(-x²) · (-7x) = 7x³" },
-                { q: "Multiplica: 3xy · 4x²y", a: "12x³y²", sol: "3xy · 4x²y = 12x³y²" }
+                { q: "Multiplica: 2x · 5x", a: "10x²", sol: "(2·5)x⁽¹⁺¹⁾ = 10x²" },
+                { q: "Multiplica: 4x² · 3x", a: "12x³", sol: "(4·3)x⁽²⁺¹⁾ = 12x³" },
+                { q: "Multiplica: (-2x) · 6x²", a: "-12x³", sol: "(-2·6)x⁽¹⁺²⁾ = -12x³" },
+                { q: "Multiplica: 8x³ · (-3x)", a: "-24x⁴", sol: "(8·(-3))x⁽³⁺¹⁾ = -24x⁴" },
+                { q: "Multiplica: (-x²) · (-7x)", a: "7x³", sol: "((-1)·(-7))x⁽²⁺¹⁾ = 7x³" },
+                { q: "Multiplica: 3xy · 4x²y", a: "12x³y²", sol: "(3·4)x⁽¹⁺²⁾y⁽¹⁺¹⁾ = 12x³y²" }
             ],
             "3-3.2": [
                 { q: "Multiplica: 2x(x + 3)", a: "2x²+6x", sol: "2x · x + 2x · 3 = 2x² + 6x" },
@@ -153,10 +153,10 @@
             // BLOQUE 4: IDENTIDADES NOTABLES
             "4-4.1": [
                 { q: "Desarrolla: (x + 3)²", a: "x²+6x+9", sol: "(x+3)² = x² + 2·x·3 + 3² = x² + 6x + 9" },
-                { q: "Desarrolla: (2x + 5)²", a: "4x²+20x+25", sol: "(2x+5)² = 4x² + 20x + 25" },
-                { q: "Desarrolla: (3x + 1)²", a: "9x²+6x+1", sol: "(3x+1)² = 9x² + 6x + 1" },
-                { q: "Desarrolla: (x + 2y)²", a: "x²+4xy+4y²", sol: "(x+2y)² = x² + 4xy + 4y²" },
-                { q: "Desarrolla: (2a + 3b)²", a: "4a²+12ab+9b²", sol: "(2a+3b)² = 4a² + 12ab + 9b²" },
+                { q: "Desarrolla: (2x + 5)²", a: "4x²+20x+25", sol: "(2x)² + 2·(2x)·(5) + (5)² = 4x² + 20x + 25" },
+                { q: "Desarrolla: (3x + 1)²", a: "9x²+6x+1", sol: "(3x)² + 2·(3x)·(1) + (1)² = 9x² + 6x + 1" },
+                { q: "Desarrolla: (x + 2y)²", a: "x²+4xy+4y²", sol: "(x)² + 2·(x)·(2y) + (2y)² = x² + 4xy + 4y²" },
+                { q: "Desarrolla: (2a + 3b)²", a: "4a²+12ab+9b²", sol: "(2a)² + 2·(2a)·(3b) + (3b)² = 4a² + 12ab + 9b²" },
                 // NUEVO: Con fracciones y varias letras
                 { q: "Desarrolla: (x/2 + y/3)²", a: "x²/4+xy/3+y²/9", sol: "(x/2)² + 2(x/2)(y/3) + (y/3)² = x²/4 + xy/3 + y²/9" },
                 { q: "Desarrolla: (2a²b/3 + c/2)²", a: "4a⁴b²/9+2a²bc/3+c²/4", sol: "(2a²b/3)² + 2(2a²b/3)(c/2) + (c/2)² = 4a⁴b²/9 + 2a²bc/3 + c²/4" },
@@ -164,11 +164,11 @@
                 { q: "Desarrolla: (ab/2 + cd/3)²", a: "a²b²/4+abcd/3+c²d²/9", sol: "(ab/2)² + 2(ab/2)(cd/3) + (cd/3)² = a²b²/4 + abcd/3 + c²d²/9" }
             ],
             "4-4.2": [
-                { q: "Desarrolla: (x - 4)²", a: "x²-8x+16", sol: "(x-4)² = x² - 8x + 16" },
-                { q: "Desarrolla: (3x - 2)²", a: "9x²-12x+4", sol: "(3x-2)² = 9x² - 12x + 4" },
-                { q: "Desarrolla: (2x - 5)²", a: "4x²-20x+25", sol: "(2x-5)² = 4x² - 20x + 25" },
-                { q: "Desarrolla: (x - 3y)²", a: "x²-6xy+9y²", sol: "(x-3y)² = x² - 6xy + 9y²" },
-                { q: "Desarrolla: (2a - b)²", a: "4a²-4ab+b²", sol: "(2a-b)² = 4a² - 4ab + b²" },
+                { q: "Desarrolla: (x - 4)²", a: "x²-8x+16", sol: "(x)² - 2·(x)·(4) + (4)² = x² - 8x + 16" },
+                { q: "Desarrolla: (3x - 2)²", a: "9x²-12x+4", sol: "(3x)² - 2·(3x)·(2) + (2)² = 9x² - 12x + 4" },
+                { q: "Desarrolla: (2x - 5)²", a: "4x²-20x+25", sol: "(2x)² - 2·(2x)·(5) + (5)² = 4x² - 20x + 25" },
+                { q: "Desarrolla: (x - 3y)²", a: "x²-6xy+9y²", sol: "(x)² - 2·(x)·(3y) + (3y)² = x² - 6xy + 9y²" },
+                { q: "Desarrolla: (2a - b)²", a: "4a²-4ab+b²", sol: "(2a)² - 2·(2a)·(b) + (b)² = 4a² - 4ab + b²" },
                 // NUEVO: Con fracciones y varias letras
                 { q: "Desarrolla: (a/3 - b/4)²", a: "a²/9-ab/6+b²/16", sol: "(a/3)² - 2(a/3)(b/4) + (b/4)² = a²/9 - ab/6 + b²/16" },
                 { q: "Desarrolla: (3x²y/5 - 2z/3)²", a: "9x⁴y²/25-4x²yz/5+4z²/9", sol: "(3x²y/5)² - 2(3x²y/5)(2z/3) + (2z/3)² = 9x⁴y²/25 - 4x²yz/5 + 4z²/9" },
@@ -176,11 +176,11 @@
                 { q: "Desarrolla: (xy/2 - 3z²/4)²", a: "x²y²/4-3xyz²/4+9z⁴/16", sol: "(xy/2)² - 2(xy/2)(3z²/4) + (3z²/4)² = x²y²/4 - 3xyz²/4 + 9z⁴/16" }
             ],
             "4-4.3": [
-                { q: "Multiplica: (x + 5)(x - 5)", a: "x²-25", sol: "(x+5)(x-5) = x² - 25" },
-                { q: "Multiplica: (3x + 2)(3x - 2)", a: "9x²-4", sol: "(3x+2)(3x-2) = 9x² - 4" },
-                { q: "Multiplica: (2x + 7)(2x - 7)", a: "4x²-49", sol: "(2x+7)(2x-7) = 4x² - 49" },
-                { q: "Multiplica: (x + 2y)(x - 2y)", a: "x²-4y²", sol: "(x+2y)(x-2y) = x² - 4y²" },
-                { q: "Multiplica: (3a + 4b)(3a - 4b)", a: "9a²-16b²", sol: "(3a+4b)(3a-4b) = 9a² - 16b²" },
+                { q: "Multiplica: (x + 5)(x - 5)", a: "x²-25", sol: "(x)² - (5)² = x² - 25" },
+                { q: "Multiplica: (3x + 2)(3x - 2)", a: "9x²-4", sol: "(3x)² - (2)² = 9x² - 4" },
+                { q: "Multiplica: (2x + 7)(2x - 7)", a: "4x²-49", sol: "(2x)² - (7)² = 4x² - 49" },
+                { q: "Multiplica: (x + 2y)(x - 2y)", a: "x²-4y²", sol: "(x)² - (2y)² = x² - 4y²" },
+                { q: "Multiplica: (3a + 4b)(3a - 4b)", a: "9a²-16b²", sol: "(3a)² - (4b)² = 9a² - 16b²" },
                 // NUEVO: Con fracciones y varias letras
                 { q: "Multiplica: (x/2 + y/3)(x/2 - y/3)", a: "x²/4-y²/9", sol: "(x/2 + y/3)(x/2 - y/3) = (x/2)² - (y/3)² = x²/4 - y²/9" },
                 { q: "Multiplica: (2a²b/3 + c/5)(2a²b/3 - c/5)", a: "4a⁴b²/9-c²/25", sol: "(2a²b/3)² - (c/5)² = 4a⁴b²/9 - c²/25" },
@@ -199,11 +199,11 @@
 
             // BLOQUE 5: DIVISIÓN Y FACTORIZACIÓN
             "5-5.1": [
-                { q: "Divide: 12x³ : 3x", a: "4x²", sol: "12x³ : 3x = 4x²" },
-                { q: "Divide: -20x⁴ : 4x²", a: "-5x²", sol: "-20x⁴ : 4x² = -5x²" },
-                { q: "Divide: 15x⁵ : (-3x²)", a: "-5x³", sol: "15x⁵ : (-3x²) = -5x³" },
-                { q: "Divide: 24x⁶ : 6x³", a: "4x³", sol: "24x⁶ : 6x³ = 4x³" },
-                { q: "Divide: -18x⁴y² : 3xy", a: "-6x³y", sol: "-18x⁴y² : 3xy = -6x³y" }
+                { q: "Divide: 12x³ : 3x", a: "4x²", sol: "(12 : 3)x⁽³⁻¹⁾ = 4x²" },
+                { q: "Divide: -20x⁴ : 4x²", a: "-5x²", sol: "(-20 : 4)x⁽⁴⁻²⁾ = -5x²" },
+                { q: "Divide: 15x⁵ : (-3x²)", a: "-5x³", sol: "(15 : (-3))x⁽⁵⁻²⁾ = -5x³" },
+                { q: "Divide: 24x⁶ : 6x³", a: "4x³", sol: "(24 : 6)x⁽⁶⁻³⁾ = 4x³" },
+                { q: "Divide: -18x⁴y² : 3xy", a: "-6x³y", sol: "(-18 : 3)x⁽⁴⁻¹⁾y⁽²⁻¹⁾ = -6x³y" }
             ],
             "5-5.2": [
                 { q: "Divide: (10x³ - 15x²) : 5x", a: "2x²-3x", sol: "10x³:5x - 15x²:5x = 2x² - 3x" },
@@ -218,10 +218,10 @@
                 { q: "Divide: (x³ - 8) : (x - 2). Cociente:", a: "x²+2x+4", sol: "x³ - 8 = (x-2)(x²+2x+4), cociente x²+2x+4" }
             ],
             "5-5.4": [
-                { q: "Divide: (x³ + 2x² - 5x + 3) : (x² - 1). Cociente:", a: "x+2", sol: "Cociente: x+2, Resto: -4x+5" },
-                { q: "Divide: (2x³ - 3x² + x - 4) : (x² + 1). Cociente:", a: "2x-3", sol: "Cociente: 2x-3, Resto: -x-1" },
-                { q: "Divide: (x⁴ - 2x² + 1) : (x² - 1). Cociente:", a: "x²-1", sol: "Cociente: x²-1, Resto: 0" },
-                { q: "Divide: (x³ - 5x² + 8x - 4) : (x² - 2x + 1). Cociente:", a: "x-3", sol: "Cociente: x-3, Resto: x-1" }
+                { q: "Divide: (x³ + 2x² - 5x + 3) : (x² - 1). Cociente:", a: "x+2", sol: "Dividimos x³ entre x² y obtenemos x. Restamos x(x² - 1) al dividendo y queda 2x² - 4x + 3. Dividimos 2x² entre x² y obtenemos 2. Al restar 2(x² - 1) queda -4x + 5. Cociente: x+2, Resto: -4x+5. El grado del resto es menor que el del divisor." },
+                { q: "Divide: (2x³ - 3x² + x - 4) : (x² + 1). Cociente:", a: "2x-3", sol: "Dividimos 2x³ entre x² y obtenemos 2x. Restamos 2x(x² + 1) y queda -3x² - x - 4. Dividimos -3x² entre x² y obtenemos -3. Al restar (-3)(x² + 1) queda -x - 1. Cociente: 2x-3, Resto: -x-1. El grado del resto es menor que el del divisor." },
+                { q: "Divide: (x⁴ - 2x² + 1) : (x² - 1). Cociente:", a: "x²-1", sol: "Dividimos x⁴ entre x² y obtenemos x². Restamos x²(x² - 1) y queda -x² + 1. Dividimos -x² entre x² y obtenemos -1. Al restar (-1)(x² - 1) queda 0. Cociente: x²-1, Resto: 0. La división es exacta." },
+                { q: "Divide: (x³ - 5x² + 8x - 4) : (x² - 2x + 1). Cociente:", a: "x-3", sol: "Dividimos x³ entre x² y obtenemos x. Restamos x(x² - 2x + 1) y queda -3x² + 7x - 4. Dividimos -3x² entre x² y obtenemos -3. Al restar (-3)(x² - 2x + 1) queda x - 1. Cociente: x-3, Resto: x-1. El grado del resto es menor que el del divisor." }
             ],
             "5-5.5": [
                 { q: "Divide por Ruffini: (x³ + 2x² - 5x - 6) : (x - 2). Cociente:", a: "x²+4x+3", sol: "Ruffini con r=2 → cociente x²+4x+3, resto 0" },
@@ -289,8 +289,9 @@
         const state = {
             selectedBlock: null,
             selectedLevel: null,
-            answers: {},
-            showResults: {},
+            answers: JSON.parse(localStorage.getItem("polyAnswers") || "{}"),
+            solved: JSON.parse(localStorage.getItem("polySolved") || "{}"),
+            showResults: JSON.parse(localStorage.getItem("polyResults") || "{}"),
             studentName: localStorage.getItem('studentName') || '',
             statistics: JSON.parse(localStorage.getItem('polyStatistics') || '{}'),
             levelProgress: JSON.parse(localStorage.getItem('polyProgress') || '{}'),
@@ -300,57 +301,196 @@
         };
 
         function saveState() {
+            localStorage.setItem('polySolved', JSON.stringify(state.solved));
+            localStorage.setItem('polyAnswers', JSON.stringify(state.answers));
+            localStorage.setItem('polyResults', JSON.stringify(state.showResults));
             localStorage.setItem('studentName', state.studentName);
             localStorage.setItem('polyStatistics', JSON.stringify(state.statistics));
             localStorage.setItem('polyProgress', JSON.stringify(state.levelProgress));
         }
 
-        function normalizeAnswer(answer) {
-            if (!answer) return '';
-            let normalized = answer.toLowerCase().trim();
-            normalized = normalized.replace(/\s+/g, '');
-            normalized = normalized.replace(/\^/g, '').replace(/²/g, '2').replace(/³/g, '3').replace(/⁴/g, '4').replace(/⁵/g, '5').replace(/\*/g, '');
-            
-            if (normalized.startsWith('(') && normalized.endsWith(')') && !normalized.includes(')(')) {
-                const withoutParen = normalized.slice(1, -1);
-                if (!withoutParen.includes('(') && !withoutParen.includes(')')) {
-                    normalized = withoutParen;
+        // Arithmetic stays exact, including decimal and fractional coefficients.
+        function fraction(n, d = 1n) {
+            if (d === 0n) throw Error('Denominador cero');
+            let a = n < 0n ? -n : n;
+            let b = d < 0n ? -d : d;
+            while (b) [a, b] = [b, a % b];
+            if (d < 0n) a = -a;
+            return [n / a, d / a];
+        }
+
+        function parseAnswer(text) {
+            if (!text.trim() || text.length > 220) throw Error('Longitud');
+            const superscripts = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+            const source = text.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹]+/g, s => '^' + [...s].map(c => superscripts.indexOf(c)).join(''))
+                .replace(/[−–]/g, '-').replace(/[·×]/g, '*').replace(/÷|:/g, '/').replace(/,/g, '.');
+            const tokens = source.match(/\d+(?:\.\d+)?|[a-z]|[^\s]/g) || [];
+            let pos = 0;
+            function atom() {
+                const t = tokens[pos++];
+                if (t === '(') {
+                    const node = sum();
+                    if (tokens[pos++] !== ')') throw Error('Paréntesis');
+                    return node;
                 }
+                if (/^[abcdxyz]$/.test(t || '')) return {op:'letter', t};
+                if (!/^\d+(?:\.\d+)?$/.test(t || '') || t.length > 24) throw Error('Número');
+                const decimals = (t.split('.')[1] || '').length;
+                return {op:'number', value:fraction(BigInt(t.replace('.', '')), 10n ** BigInt(decimals))};
             }
-            
-            return normalized;
+            function signed() {
+                if (tokens[pos] === '+' || tokens[pos] === '-') {
+                    const sign = tokens[pos++];
+                    const child = signed();
+                    return sign === '-' ? {op:'neg', child} : child;
+                }
+                let node = atom();
+                if (tokens[pos] === '^') {
+                    pos++;
+                    const exp = tokens[pos++];
+                    if (!/^\d{1,2}$/.test(exp || '') || Number(exp) > 12) throw Error('Exponente');
+                    node = {op:'power', child:node, exponent:Number(exp)};
+                }
+                return node;
+            }
+            function product() {
+                let node = signed();
+                while (pos < tokens.length) {
+                    let op = tokens[pos];
+                    if (op === '*' || op === '/') pos++;
+                    else if (/^[abcdxyz(]$/.test(op)) op = '*';
+                    else break;
+                    node = {op, left:node, right:signed()};
+                }
+                return node;
+            }
+            function sum() {
+                let node = product();
+                while (tokens[pos] === '+' || tokens[pos] === '-') {
+                    const op = tokens[pos++];
+                    node = {op, left:node, right:product()};
+                }
+                return node;
+            }
+            const root = sum();
+            if (pos !== tokens.length) throw Error('Expresión incompleta');
+            return root;
+        }
+
+        // Keep sums as factors: a developed polynomial and its factorization
+        // have different signatures. Normalize scalar multiples and factor order.
+        function signature(node) {
+            const scalar = (coef, factors = []) => ({coef, factors});
+            function combine(a, b, divide = false) {
+                const [n, d] = b.coef;
+                if (divide && b.factors.length) throw Error('Denominador literal');
+                const coef = fraction(a.coef[0] * (divide ? d : n), a.coef[1] * (divide ? n : d));
+                if (a.factors.length + b.factors.length > 64) throw Error('Demasiados factores');
+                return scalar(coef, [...a.factors, ...b.factors].sort());
+            }
+            function visit(n) {
+                if (n.op === 'number') return scalar(n.value);
+                if (n.op === 'letter') return scalar([1n,1n], [n.t]);
+                if (n.op === 'neg') return combine(scalar([-1n,1n]), visit(n.child));
+                if (n.op === '*' || n.op === '/') return combine(visit(n.left), visit(n.right), n.op === '/');
+                if (n.op === 'power') {
+                    if (n.exponent < 1) throw Error('Potencia sin reducir');
+                    const base = visit(n.child);
+                    if (base.coef.some(v => v.toString().length * n.exponent > 120)) throw Error('Potencia demasiado grande');
+                    let result = scalar([1n,1n]);
+                    for (let i = 0; i < n.exponent; i++) result = combine(result, base);
+                    return result;
+                }
+                const terms = new Map();
+                function collect(t, sign) {
+                    if (t.op === 'neg') return collect(t.child, -sign);
+                    if (t.op === '+' || t.op === '-') {
+                        collect(t.left, sign);
+                        collect(t.right, t.op === '+' ? sign : -sign);
+                    } else {
+                        const term = visit(t);
+                        const key = JSON.stringify(term.factors);
+                        if (terms.has(key) || !term.coef[0]) throw Error('Términos sin reducir');
+                        terms.set(key, [sign * term.coef[0], term.coef[1]]);
+                    }
+                }
+                collect(n, 1n);
+                const keys = [...terms.keys()].sort();
+                const lead = terms.get(keys[0]);
+                const normalized = keys.map(key => {
+                    const [a,b] = terms.get(key);
+                    return [key, fraction(a * lead[1], b * lead[0]).join('/')];
+                });
+                return scalar(lead, [JSON.stringify(normalized)]);
+            }
+            const value = visit(node);
+            return JSON.stringify([value.coef.join('/'), value.factors]);
+        }
+
+        function correctAnswer(input, expected) {
+            try {
+                const pupil = parseAnswer(input);
+                const model = parseAnswer(expected);
+                if (signature(pupil) !== signature(model)) return false;
+                // A development must have its terms outside the parentheses.
+                const unwrap = n => n.op === 'neg' ? unwrap(n.child) : n;
+                if (['+', '-'].includes(model.op) && !['+', '-'].includes(unwrap(pupil).op)) return false;
+                if (!expected.includes('(')) {
+                    // In a finished monomial each variable occurs once and the
+                    // coefficient may be written before, after or as a fraction.
+                    function reducedTerm(root) {
+                        const letters = new Set();
+                        let numerators = 0, denominators = 0;
+                        function part(n, denominator = false) {
+                            if (n.op === 'neg') return part(n.child, denominator);
+                            if (n.op === '*') return part(n.left, denominator) && part(n.right, denominator);
+                            if (n.op === '/') return part(n.left, denominator) && part(n.right, !denominator);
+                            if (n.op === 'number') return denominator ? ++denominators <= 1 : ++numerators <= 1;
+                            if (n.op === 'power') n = n.child;
+                            if (denominator || n.op !== 'letter' || letters.has(n.t)) return false;
+                            letters.add(n.t);
+                            return true;
+                        }
+                        return part(root);
+                    }
+                    function reduced(n) {
+                        if (n.op === 'neg') return reduced(n.child);
+                        if (n.op === '+' || n.op === '-') return reduced(n.left) && reduced(n.right);
+                        return reducedTerm(n);
+                    }
+                    if (!reduced(pupil)) return false;
+                }
+                return true;
+            } catch {
+                return false;
+            }
+        }
+
+        function escapeHtml(text) {
+            return String(text).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
         }
 
         function checkAnswer(key, correct) {
-            const userAnswer = normalizeAnswer(state.answers[key] || '');
-            const correctAnswer = normalizeAnswer(correct);
-            
-            let isCorrect = userAnswer === correctAnswer;
-            
-            if (!isCorrect && correct.includes('(') && (state.answers[key] || '').includes('(')) {
-                const extractFactors = (str) => {
-                    const factors = str.match(/\([^)]+\)/g) || [];
-                    return factors.sort().join('');
-                };
-                const userFactors = extractFactors(state.answers[key]);
-                const correctFactors = extractFactors(correct);
-                isCorrect = userFactors === correctFactors;
+            const input = document.getElementById('answer-' + key);
+            if (!input.value.trim()) {
+                input.setCustomValidity('Escribe una respuesta antes de comprobar.');
+                input.reportValidity();
+                return;
             }
-            
-            state.showResults[key] = { correct: isCorrect };
-            
-            const parts = key.split('-');
-            const statKey = parts[0] + '-' + parts[1];
-            
-            if (!state.statistics[statKey]) state.statistics[statKey] = { total: 0, correct: 0 };
-            if (!state.levelProgress[statKey]) state.levelProgress[statKey] = {};
-            
-            if (state.levelProgress[statKey][key] === undefined) {
-                state.statistics[statKey].total++;
-                if (isCorrect) state.statistics[statKey].correct++;
-                state.levelProgress[statKey][key] = isCorrect;
-                saveState();
+            const answer = input.value;
+            state.answers[key] = answer;
+            const isCorrect = correctAnswer(answer, correct);
+            state.showResults[key] = { correct: isCorrect, answer };
+            const statKey = key.split('-').slice(0, 2).join('-');
+            const progress = state.levelProgress[statKey] ||= {};
+            const stats = state.statistics[statKey] ||= {total:0, correct:0};
+            if (progress[key] === undefined) {
+                stats.total++;
+                if (isCorrect) stats.correct++;
+                progress[key] = isCorrect;
             }
+            if (isCorrect) state.solved[key] = true;
+            saveState();
             render();
         }
 
@@ -365,11 +505,13 @@
                 totalCorrect += stats.correct;
                 const blockId = key.split('-')[0];
                 if (!byBlock[blockId]) byBlock[blockId] = { total: 0, correct: 0 };
+                const solved = Object.entries(state.levelProgress[key] || {}).filter(([id, first]) => first || state.solved[id]).length;
+                byBlock[blockId].solved = (byBlock[blockId].solved || 0) + solved;
                 byBlock[blockId].total += stats.total;
                 byBlock[blockId].correct += stats.correct;
             });
             const percentage = totalExercises > 0 ? ((totalCorrect / totalExercises) * 100).toFixed(1) : 0;
-            return { totalExercises, totalCorrect, percentage, timeSpent: getTimeSpent(), byBlock };
+            return { solved: Object.values(byBlock).reduce((sum, block) => sum + block.solved, 0), totalExercises, totalCorrect, percentage, timeSpent: getTimeSpent(), byBlock };
         }
 
         function renderFractions(text) {
@@ -418,7 +560,7 @@
                                 <div>
                                     <h1 class="text-4xl font-bold mb-2">Polinomios 4º ESO</h1>
                                     <p class="text-indigo-100 text-lg">Práctica Interactiva 🚀</p>
-                                    <p class="text-indigo-200 text-sm mt-1">👤 ${state.studentName}</p>
+                                    <p class="text-indigo-200 text-sm mt-1">👤 ${escapeHtml(state.studentName)}</p>
                                 </div>
                             </div>
                             <div class="flex gap-2 flex-wrap">
@@ -430,7 +572,7 @@
                         <div class="flex gap-4 mt-6 flex-wrap">
                             <div class="bg-white bg-opacity-20 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold">⏱️ ${report.timeSpent} min</span></div>
                             ${report.totalExercises > 0 ? `<div class="bg-green-500 bg-opacity-90 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold">✅ ${report.totalCorrect}/${report.totalExercises}</span></div>
-                            <div class="bg-yellow-400 bg-opacity-90 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold text-gray-800">📊 ${report.percentage}% acierto</span></div>` : ''}
+                            <div class="bg-yellow-400 bg-opacity-90 px-4 py-2 rounded-lg backdrop-blur"><span class="font-semibold text-gray-800">📊 ${report.percentage}% al primer intento · ${report.solved} resueltos</span></div>` : ''}
                         </div>
                     </div>
                     ${renderContent()}
@@ -471,13 +613,37 @@
                         return `<div onclick="selectLevel('${levelId}')" class="bg-white rounded-xl shadow-lg p-6 cursor-pointer hover:shadow-2xl transition-all">
                             <div class="flex justify-between items-center mb-3">
                                 <span class="bg-green-500 text-white px-4 py-1 rounded-full text-sm font-bold">Nivel ${levelId}</span>
-                                ${hasStats ? `<span class="text-sm font-bold text-green-600">${stats.correct}/${stats.total}</span>` : ''}
+                                ${hasStats ? `<span class="text-sm font-bold text-green-600">${stats.correct}/${stats.total} al primer intento</span>` : ''}
                             </div>
                             <h3 class="font-bold text-xl text-gray-800 mb-2">${levelName}</h3>
                             ${hasStats ? `<div class="mt-2"><div class="w-full bg-gray-200 rounded-full h-2"><div class="h-2 rounded-full bg-green-500" style="width: ${pct}%"></div></div></div>` : ''}
                         </div>`;
                     }).join('')}
                 </div></div>`;
+        }
+
+        function ruffini(root, coefficients) {
+            const row = [coefficients[0]], products = [''];
+            for (const c of coefficients.slice(1)) {
+                const product = row[row.length - 1] * root;
+                products.push(product);
+                row.push(c + product);
+            }
+            const cells = values => values.map(v => `<td class="px-2 text-center">${v}</td>`).join('');
+            return `<div class="overflow-x-auto my-2"><table class="border-collapse"><caption>Ruffini con ${root}</caption><tbody>
+                <tr><th scope="row">Coeficientes</th>${cells(coefficients)}</tr>
+                <tr><th scope="row">Productos por ${root}</th>${cells(products)}</tr>
+                <tr class="border-t"><th scope="row">Resultado</th>${cells(row)}</tr></tbody></table></div>`;
+        }
+
+        function explanation(ex, level, index) {
+            if (level !== '5.5' && !(level === '5.6' && index === 6)) return renderFractions(ex.sol);
+            const intro = 'Baja el primer coeficiente. Multiplica el número que acabas de bajar u obtener por la raíz del divisor y suma el producto al coeficiente de la columna siguiente. El último valor es el resto.';
+            if (level === '5.6') return intro + ruffini(-1,[1,2,-1,-2]) +
+                'El resto es 0. Extraemos (x + 1) y seguimos con el cociente x² + x - 2.' +
+                ruffini(-2,[1,1,-2]) + 'El resto vuelve a ser 0. Extraemos (x + 2) y el cociente es x - 1. El producto final es (x + 1)(x + 2)(x - 1).';
+            const cases = [[2,[1,2,-5,-6]],[1,[1,-6,11,-6]],[-3,[2,3,-8,3]],[1,[1,0,0,0,-1]]];
+            return intro + (index === 3 ? ' En x⁴ - 1 escribimos 0 en los lugares de x³, x² y x.' : '') + ruffini(...cases[index]) + ex.sol;
         }
 
         function renderExercises() {
@@ -494,21 +660,22 @@
                 <div class="space-y-6">
                     ${exercises.map((ex, idx) => {
                         const key = `${state.selectedBlock}-${state.selectedLevel}-${idx}`;
-                        const result = state.showResults[key];
+                        const saved = state.showResults[key];
+                        const result = saved?.answer === state.answers[key] ? saved : null;
                         return `<div class="bg-white border-2 rounded-xl p-6">
                             <div class="flex items-start gap-4">
                                 <span class="bg-indigo-100 text-indigo-800 px-4 py-2 rounded-full font-bold">#${idx + 1}</span>
                                 <div class="flex-1">
                                     <div class="text-xl font-medium mb-4">${renderFractions(ex.q)}</div>
                                     <div class="flex gap-2 flex-wrap">
-                                        <input type="text" id="answer-${key}" onchange="updateAnswer('${key}', this.value)" placeholder="Tu respuesta" class="flex-1 min-w-[200px] px-4 py-3 border-2 rounded-lg focus:border-indigo-500 outline-none">
+                                        <input type="text" id="answer-${key}" value="${escapeHtml(state.answers[key] || '')}" oninput="this.setCustomValidity(''); updateAnswer('${key}', this.value)" placeholder="Tu respuesta" class="flex-1 min-w-[200px] px-4 py-3 border-2 rounded-lg focus:border-indigo-500 outline-none">
                                         <button onclick="checkAnswer('${key}', '${ex.a}')" class="px-8 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition font-medium">Comprobar</button>
                                     </div>
-                                    ${result ? `<div class="mt-4 p-4 rounded-lg ${result.correct ? 'bg-green-50 border-2 border-green-300' : 'bg-red-50 border-2 border-red-300'}">
+                                    ${result ? `<div id="feedback-${key}" class="mt-4 p-4 rounded-lg ${result.correct ? 'bg-green-50 border-2 border-green-300' : 'bg-red-50 border-2 border-red-300'}">
                                         <div class="flex items-center gap-2 mb-2">
                                             ${result.correct ? '<span class="text-2xl">✅</span><span class="font-bold text-green-800">¡Correcto! 🎉</span>' : '<span class="text-2xl">❌</span><span class="font-bold text-red-800">Incorrecto</span>'}
                                         </div>
-                                        <div class="text-gray-700"><strong>Explicación:</strong> ${renderFractions(ex.sol)}</div>
+                                        <div class="text-gray-700"><strong>Explicación:</strong> ${explanation(ex, state.selectedLevel, idx)}</div>
                                     </div>` : ''}
                                 </div>
                             </div>
@@ -523,16 +690,17 @@
                     <div class="text-center mb-6">
                         <div class="text-6xl mb-4">🏆</div>
                         <h2 class="text-3xl font-bold text-gray-800 mb-2">Informe de Progreso</h2>
-                        <p class="text-gray-600">Alumno: <strong>${state.studentName}</strong></p>
+                        <p class="text-gray-600">Alumno: <strong>${escapeHtml(state.studentName)}</strong></p>
                     </div>
-                    <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div class="grid md:grid-cols-4 gap-4 mb-6">
                         <div class="bg-blue-50 rounded-xl p-4 text-center">
                             <div class="text-3xl font-bold text-blue-600">${report.totalExercises}</div>
                             <div class="text-sm text-gray-600">Ejercicios realizados</div>
                         </div>
                         <div class="bg-green-50 rounded-xl p-4 text-center">
                             <div class="text-3xl font-bold text-green-600">${report.percentage}%</div>
-                            <div class="text-sm text-gray-600">Acierto</div>
+                            <div class="text-sm text-gray-600">Acierto al primer intento (${report.totalCorrect}/${report.totalExercises})</div>
+                        </div><div class="bg-indigo-50 rounded-xl p-4 text-center"><strong>${report.solved}</strong><div>Ejercicios resueltos</div>
                         </div>
                         <div class="bg-purple-50 rounded-xl p-4 text-center">
                             <div class="text-3xl font-bold text-purple-600">${report.timeSpent}</div>
@@ -546,7 +714,7 @@
                             return `<div class="mb-3">
                                 <div class="flex justify-between items-center mb-1">
                                     <span class="font-medium">${blocks[blockId]?.title}</span>
-                                    <span class="text-sm text-gray-600">${data.correct}/${data.total} (${pct}%)</span>
+                                    <span class="text-sm text-gray-600">${data.correct}/${data.total} al primer intento (${pct}%) · ${data.solved} resueltos</span>
                                 </div>
                                 <div class="w-full bg-gray-200 rounded-full h-3">
                                     <div class="h-3 rounded-full bg-gradient-to-r ${blocks[blockId]?.color}" style="width: ${pct}%"></div>
@@ -591,7 +759,11 @@
         window.backToBlocks = () => { state.selectedBlock = null; state.selectedLevel = null; render(); };
         window.backToLevels = () => { state.selectedLevel = null; render(); };
         window.goHome = () => { state.selectedBlock = null; state.selectedLevel = null; render(); };
-        window.updateAnswer = (key, value) => { state.answers[key] = value; };
+        window.updateAnswer = (key, value) => { state.answers[key] = value;
+            localStorage.setItem('polyAnswers', JSON.stringify(state.answers));
+            const feedback = document.getElementById('feedback-' + key);
+            if (feedback) feedback.hidden = state.showResults[key]?.answer !== value;
+        };
         window.checkAnswer = checkAnswer;
         window.showReport = () => { state.showReport = true; render(); };
         window.hideReport = () => { state.showReport = false; render(); };
@@ -606,7 +778,8 @@
             state.selectedLevel = null; 
             state.showResetModal = false; 
             state.studentName = '';
-            localStorage.clear(); 
+            state.solved = {};
+            for (const name of ['studentName','polyStatistics','polyProgress','polyAnswers','polySolved','polyResults']) localStorage.removeItem(name);
             render();
         };
 
